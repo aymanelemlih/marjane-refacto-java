@@ -23,6 +23,10 @@ public class ProductServiceImpl implements ProductService {
     private static final Logger LOGGER = LoggerFactory.getLogger(ProductService.class);
 
 
+    /**
+     * To handle each type of our product and process the order
+     * @param products list of product
+     */
     @Override
     public void handleProduct(Set<Product> products) {
         for (Product p : products) {
@@ -69,7 +73,7 @@ public class ProductServiceImpl implements ProductService {
         }
     }
 
-    public void handleSeasonalProduct(Product product) {
+    private void handleSeasonalProduct(Product product) {
         LocalDate today = LocalDate.now();
 
         boolean isInSeason = !today.isBefore(product.getSeasonStartDate())
@@ -94,7 +98,7 @@ public class ProductServiceImpl implements ProductService {
         }
     }
 
-    public void handleFlashSaleProduct(Product p) {
+    private void handleFlashSaleProduct(Product p) {
         boolean saleEnded = LocalDate.now().isAfter(p.getFlashSaleEndDate());
         boolean maximumReached =
                 p.getFlashSaleQuantitySold() >= p.getMaximumFlashSaleQuantity();
