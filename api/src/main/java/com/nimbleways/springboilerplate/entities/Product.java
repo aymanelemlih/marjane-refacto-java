@@ -25,7 +25,7 @@ public class Product {
     private Integer available;
 
     @Column(name = "type")
-    private String type;
+    private ProductType productType;
 
     @Column(name = "name")
     private String name;
@@ -38,4 +38,13 @@ public class Product {
 
     @Column(name = "season_end_date")
     private LocalDate seasonEndDate;
+
+    @Column(name = "flash_end_date")
+    private LocalDate flashSaleEndDate;
+
+    @Column(name = "max_FlashSale_Quantity")
+    private Integer maximumFlashSaleQuantity;
+
+    @Column(name = "flashSale_Quantity_Sold")
+    private Integer flashSaleQuantitySold;
 }
